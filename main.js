@@ -1,6 +1,6 @@
 
 const WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbwdlRRZwVrsXcZNFc0dmchJFBWXdr0xYF5Ea8Yx-n3XxoEslU930XUB7f5gPenkLikHZA/exec';
-const SURVEY_URL   = 'YOUR_SURVEY_APPS_SCRIPT_URL_HERE';
+const SURVEY_URL   = 'https://script.google.com/macros/s/AKfycbwTZy67Z0HMzP1lg-B-lvkFGINjhe9U62bsidCoC0UJMwIv97EnYyqFxp3NkoEefJuX/exec';
 // ─────────────────────────────────────────────────────────────────────────────
 
 let selectedRole = '';
