@@ -1,5 +1,5 @@
 
-const WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbwL56a9f9os6f_9d0n6WwkCIDt-jTHS4lVk4mxknpQLmi-2jRyjedv5ZFwnR1M4tTx4QA/exec';
+const WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbwdlRRZwVrsXcZNFc0dmchJFBWXdr0xYF5Ea8Yx-n3XxoEslU930XUB7f5gPenkLikHZA/exec';
 const SURVEY_URL   = 'YOUR_SURVEY_APPS_SCRIPT_URL_HERE';
 // ─────────────────────────────────────────────────────────────────────────────
 
