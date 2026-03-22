@@ -241,9 +241,10 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(3rem, 8vw, 5.7rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  max-width: 14ch;
+  font-size: clamp(3rem, 6vw, 5.15rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
   animation: fade-up 0.6s ease both;
 }
 
@@ -295,7 +296,8 @@ h3 {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: clamp(7rem, 10vw, 9rem);
+  padding-top: clamp(7rem, 10vw, 8.5rem);
+  padding-bottom: clamp(4.5rem, 7vw, 6.5rem);
   overflow: hidden;
 }
 
@@ -356,31 +358,31 @@ h3 {
 }
 
 .hero-shell {
-  width: min(100%, 50rem);
+  width: min(100%, 68rem);
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 29rem);
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
-  gap: clamp(1.25rem, 3vw, 2rem);
 }
 
 .hero-copy {
   width: 100%;
-  max-width: 43rem;
+  max-width: 38rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 1.35rem;
+  gap: 1.15rem;
   padding: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .hero-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  align-self: center;
+  align-self: flex-start;
   padding: 0.65rem 1rem;
   border: 1px solid rgba(57, 160, 110, 0.18);
   border-radius: 999px;
@@ -404,7 +406,7 @@ h3 {
 }
 
 .hero-sub {
-  max-width: 39rem;
+  max-width: 34rem;
   margin: 0;
   animation: fade-up 0.6s 0.1s ease both;
 }
@@ -415,9 +417,10 @@ h3 {
 }
 
 .hero-actions {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.85rem;
   animation: fade-up 0.6s 0.2s ease both;
 }
@@ -462,11 +465,11 @@ h3 {
 
 .hero-proof {
   width: 100%;
-  max-width: 44rem;
+  max-width: 35rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
+  justify-content: flex-start;
+  gap: 0.7rem;
   animation: fade-up 0.6s 0.3s ease both;
 }
 
@@ -496,9 +499,10 @@ h3 {
 .signup-card {
   position: relative;
   overflow: hidden;
-  width: min(100%, 44rem);
-  margin: 0 auto;
-  padding: clamp(1.15rem, 3vw, 1.6rem);
+  width: 100%;
+  max-width: 29rem;
+  margin: 0 0 0 auto;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
   border-radius: var(--radius-lg);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.88)),
@@ -526,7 +530,7 @@ h3 {
   align-items: center;
   gap: 0.45rem;
   padding: 0.45rem 0.8rem;
-  margin: 0 auto 0.9rem;
+  margin: 0 0 0.9rem;
   border-radius: 999px;
   background: rgba(16, 54, 41, 0.08);
   color: var(--forest-700);
@@ -540,14 +544,14 @@ h3 {
   font-size: clamp(1.85rem, 4vw, 2.4rem);
   line-height: 1;
   margin-bottom: 0.7rem;
-  text-align: center;
+  text-align: left;
 }
 
 .card-copy {
-  max-width: 31rem;
-  margin: 0 auto 1.3rem;
+  max-width: none;
+  margin: 0 0 1.3rem;
   font-size: 0.98rem;
-  text-align: center;
+  text-align: left;
 }
 
 .waitlist-fields {
@@ -664,7 +668,7 @@ h3 {
 .signup-meta {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.75rem;
   margin-top: 1rem;
 }
@@ -673,8 +677,8 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  max-width: 50rem;
-  margin: 1.5rem auto 0;
+  max-width: 68rem;
+  margin: 2rem auto 0;
   animation: fade-up 0.6s 0.35s ease both;
 }
 
@@ -1186,8 +1190,49 @@ footer {
 }
 
 @media (max-width: 1040px) {
+  .hero-shell,
   .survey-layout {
     grid-template-columns: 1fr;
+  }
+
+  .hero-shell {
+    width: min(100%, 42rem);
+    gap: 1.5rem;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-tag {
+    align-self: center;
+  }
+
+  .hero-sub,
+  .hero-proof {
+    max-width: 38rem;
+  }
+
+  .hero-actions,
+  .hero-proof,
+  .signup-meta {
+    justify-content: center;
+  }
+
+  .signup-card {
+    max-width: 38rem;
+    margin: 0 auto;
+  }
+
+  .card-kicker {
+    margin-inline: auto;
+  }
+
+  .card-title,
+  .card-copy {
+    text-align: center;
   }
 
   .survey-intro {
@@ -1278,11 +1323,12 @@ footer {
   }
 
   .hero-shell {
-    width: min(100%, 38rem);
+    width: min(100%, 36rem);
   }
 
   h1 {
-    font-size: clamp(2.6rem, 14vw, 4rem);
+    max-width: none;
+    font-size: clamp(2.6rem, 12vw, 3.7rem);
   }
 
   h1 em::after {
@@ -1297,13 +1343,38 @@ footer {
 
   .hero-proof,
   .signup-meta {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero-primary,
   .hero-secondary,
   .cta-btn {
     width: 100%;
+  }
+
+  .hero-copy,
+  .card-title,
+  .card-copy {
+    text-align: left;
+  }
+
+  .hero-copy {
+    align-items: flex-start;
+  }
+
+  .hero-tag {
+    align-self: flex-start;
+  }
+
+  .hero-actions,
+  .hero-proof,
+  .signup-meta {
+    justify-content: flex-start;
+  }
+
+  .signup-card,
+  .card-kicker {
+    margin-inline: 0;
   }
 
   .hero-stats,
