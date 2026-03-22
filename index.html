@@ -3,224 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akyatify — The Filipino Hiker's App</title>
+<meta name="description" content="Akyatify is a coming-soon hiking app for the Philippine outdoor community, built for hikers, mountaineers, and guides.">
+<meta name="theme-color" content="#123629">
+<title>Akyatify - The Filipino Hiker's App</title>
 <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
 <link rel="manifest" href="favicon_io/site.webmanifest">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo"><img src="logo.png" alt="Akyatify"></div>
-  <div class="nav-links">
+<nav class="site-nav">
+  <a class="nav-logo" href="#top" aria-label="Akyatify home">
+    <img src="logo.png" alt="Akyatify">
+  </a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-links" id="nav-menu">
     <a href="#features">Features</a>
     <a href="#survey">Survey</a>
     <a href="#waitlist" class="nav-cta">Join Waitlist</a>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-tag">Coming soon — built for Filipino hikers</div>
-    <h1>Your summit.<br><em>Your story.</em><br>Logged.</h1>
-    <p class="hero-sub">
-      Akyatify is the all-in-one trail app built for the
-      <strong>Philippine hiking community</strong> — track your peaks, find trusted guides,
-      and connect with hikers who get it.
-    </p>
-    <div class="waitlist-form" id="waitlist">
-      <div id="form-area">
-        <div class="form-row">
-          <input type="text" id="wl-name" placeholder="Your name" required>
-          <input type="email" id="wl-email" placeholder="Email address" required>
-        </div>
-        <div class="role-row">
-          <button class="role-btn" onclick="selectRole(this,'Casual hiker')">Casual hiker</button>
-          <button class="role-btn" onclick="selectRole(this,'Mountaineer')">Mountaineer</button>
-          <button class="role-btn" onclick="selectRole(this,'Tour guide')">Tour guide</button>
-          <button class="role-btn" onclick="selectRole(this,'Just curious')">Just curious</button>
-        </div>
-        <button class="submit-btn" onclick="submitWaitlist()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Reserve my early access
-        </button>
-        <p class="form-note">No spam. No app store fees. Just early access + your input shapes the product.</p>
-      </div>
-      <div class="success-msg" id="wl-success">Salamat! You're on the list. We'll reach out before launch with early access.</div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">7,641+</div><div class="stat-label">Named peaks in the Philippines</div></div>
-      <div class="stat"><div class="stat-num">₱0</div><div class="stat-label">To get started — always free tier</div></div>
-      <div class="stat"><div class="stat-num">3-in-1</div><div class="stat-label">Hikers, guides, community</div></div>
-    </div>
-  </div>
-</section>
+<main id="top">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-one"></div>
+    <div class="hero-orb hero-orb-two"></div>
 
-<section class="why-section">
-  <div class="section-inner">
-    <div class="section-tag">The problem</div>
-    <h2>Filipino hikers deserve<br>better tools.</h2>
-    <p class="section-sub">Right now, the community runs on Facebook groups, WhatsApp chats, and word of mouth. That's not good enough.</p>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#e8a830" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 11l9-9 9 9"/><path d="M9 21V12h6v9"/><circle cx="12" cy="7" r="1.5" fill="#e8a830" stroke="none"/>
-          </svg>
-        </div>
-        <h3>No local trail maps</h3>
-        <p>Generic apps don't know Apo, Pulag, or Batulao. We're building maps for Philippine peaks — with elevation, difficulty, and offline access.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#e8a830" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="2 20 8 8 13 14 16 10 22 20"/><polyline points="16 10 18 7 20 10"/>
-          </svg>
-        </div>
-        <h3>No summit tracking</h3>
-        <p>There's nowhere to log your conquered peaks, build a climbing record, or show your community what you've achieved.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#e8a830" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/>
-            <path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M17 14c2.5 0 5 1.2 5 4"/>
-          </svg>
-        </div>
-        <h3>Guides have no platform</h3>
-        <p>Local guides run their entire business through Facebook posts. They deserve a professional booking system that builds their credibility.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#e8a830" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L4 6v6c0 5 3.5 9.7 8 11 4.5-1.3 8-6 8-11V6z"/>
-            <polyline points="9 12 11 14 15 10"/>
-          </svg>
-        </div>
-        <h3>Safety is an afterthought</h3>
-        <p>Most apps don't offer live GPS sharing or SOS features. On remote mountains, that's not acceptable.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="features">
-  <div class="section-inner">
-    <div class="section-tag">What we're building</div>
-    <h2>Built around how<br>Filipinos actually hike.</h2>
-    <p class="section-sub">Not a generic trail app with Philippine peaks added. A platform designed from the ground up for this community.</p>
-    <div class="features-grid">
-      <div class="feature-card"><span class="feature-pill pill-free">Free</span><h3>Trail Map & Navigation</h3><p>Philippine-specific trail maps with elevation profiles, difficulty ratings, and crowd-sourced trail conditions. Basic Google Maps integration from day one.</p></div>
-      <div class="feature-card"><span class="feature-pill pill-free">Free</span><h3>Community Feed</h3><p>Share trip photos, post trail condition updates, plan group hikes. A social layer built for hikers — not a generic social network.</p></div>
-      <div class="feature-card"><span class="feature-pill pill-summit">Peak Log</span><h3>Mountain Conquest Log</h3><p>Track every peak you've summited. Build your climbing history with photos, dates, and elevation stats. Share your summit card with the community.</p></div>
-      <div class="feature-card"><span class="feature-pill pill-pro">Pro</span><h3>Offline Maps + Live GPS</h3><p>Download trail maps before you hike. Share your live location with trusted contacts. One-tap SOS with emergency contact alert.</p></div>
-      <div class="feature-card"><span class="feature-pill pill-free">Free</span><h3>Guide Marketplace</h3><p>Browse verified local tour guides by trail, price, and reviews. Guides get a professional profile, booking calendar, and GCash payout — all in one place.</p></div>
-      <div class="feature-card"><span class="feature-pill pill-pro">Pro</span><h3>Smart Recommendations</h3><p>Trail suggestions based on your skill level, conquered peaks, and the season. Never run out of new mountains to climb.</p></div>
-    </div>
-  </div>
-</section>
-
-<section style="background:#f5f7f5;">
-  <div class="section-inner">
-    <div class="section-tag">Who it's for</div>
-    <h2>Made for everyone<br>on the trail.</h2>
-    <p class="section-sub">Whether you're tagging your first summit or guiding your hundredth expedition.</p>
-    <div class="who-grid">
-      <div class="who-card hiker"><div class="who-num">01</div><h3>Casual Hikers</h3><p>Discover new trails near you, find beginner-friendly routes, log your first peaks, and connect with a community that shares your love for the outdoors.</p></div>
-      <div class="who-card mountaineer"><div class="who-num">02</div><h3>Mountaineers</h3><p>Advanced topo maps, technical route grading, Garmin sync, offline GPS, and a peak leaderboard that shows the community your track record.</p></div>
-      <div class="who-card guide"><div class="who-num">03</div><h3>Tour Guides</h3><p>Your professional home base. Verified profile, booking calendar, GCash payouts, group tracking on trail, and discovery by hikers looking for your expertise.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="survey-section" id="survey">
-  <div class="section-inner">
-    <div class="section-tag">Shape the app</div>
-    <h2>Help us build the right thing.</h2>
-    <p class="section-sub">Takes 2 minutes. Your answers directly influence what we prioritize in the first version.</p>
-    <div class="survey-box">
-      <h3>Quick hiker survey</h3>
-      <p>Tell us about yourself and what matters most to you on the trail.</p>
-      <div id="survey-form">
-        <div class="survey-q">
-          <label>1. How often do you go hiking?</label>
-          <select id="sq1">
-            <option value="">Select one...</option>
-            <option>Multiple times a week</option>
-            <option>Once a week</option>
-            <option>2–3 times a month</option>
-            <option>Once a month</option>
-            <option>A few times a year</option>
-            <option>I'm just starting out</option>
-          </select>
-        </div>
-        <div class="survey-q">
-          <label>2. What region do you hike in most?</label>
-          <select id="sq2">
-            <option value="">Select one...</option>
-            <option>Metro Manila / Rizal (Batulao, Pico de Loro)</option>
-            <option>Luzon (Pulag, Apo Sandawa, Ugo)</option>
-            <option>Visayas (Canlaon, Tres Reyes)</option>
-            <option>Mindanao (Apo, Kitanglad, Dulang-Dulang)</option>
-            <option>Everywhere — I travel for peaks</option>
-          </select>
-        </div>
-        <div class="survey-q">
-          <label>3. Which features matter most to you? (Select all that apply)</label>
-          <div class="checkbox-group">
-            <label class="checkbox-item"><input type="checkbox" value="Trail maps"> Trail maps with elevation</label>
-            <label class="checkbox-item"><input type="checkbox" value="Peak log"> Peak conquest log / summit tracker</label>
-            <label class="checkbox-item"><input type="checkbox" value="Community"> Community feed and trip sharing</label>
-            <label class="checkbox-item"><input type="checkbox" value="Guide"> Finding and booking a tour guide</label>
-            <label class="checkbox-item"><input type="checkbox" value="Safety"> Live GPS sharing and SOS</label>
-            <label class="checkbox-item"><input type="checkbox" value="Offline"> Offline maps for no-signal areas</label>
-            <label class="checkbox-item"><input type="checkbox" value="Weather"> Hyperlocal weather and summit conditions</label>
+    <div class="hero-inner">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <div class="hero-tag">Coming soon for Filipino hikers</div>
+          <h1>Your summit.<br><em>Your story.</em><br>Logged beautifully.</h1>
+          <p class="hero-sub">
+            Akyatify is the all-in-one trail app built for the
+            <strong>Philippine hiking community</strong> - track your peaks, find trusted guides,
+            and connect with hikers who get it.
+          </p>
+          <div class="hero-actions">
+            <a href="#waitlist" class="hero-primary">Reserve early access</a>
+            <a href="#features" class="hero-secondary">Explore features</a>
+          </div>
+          <div class="hero-proof">
+            <span>Free tier at launch</span>
+            <span>Built for hikers and guides</span>
+            <span>Made for mobile signups</span>
           </div>
         </div>
-        <div class="survey-q">
-          <label>4. Have you ever hired a local tour guide for a hike?</label>
-          <select id="sq4">
-            <option value="">Select one...</option>
-            <option>Yes — regularly</option>
-            <option>Yes — once or twice</option>
-            <option>No, but I'd consider it</option>
-            <option>No, I prefer solo / with friends</option>
-          </select>
+
+        <div class="signup-card" id="waitlist">
+          <div class="card-kicker">Early Access</div>
+          <h2 class="card-title">Join the first wave</h2>
+          <p class="card-copy">
+            Tell us who you are and we will invite you before public launch. Your input helps shape what ships first.
+          </p>
+
+          <form id="form-area" class="waitlist-fields" onsubmit="submitWaitlist(event)">
+            <div class="form-row">
+              <input type="text" id="wl-name" placeholder="Your name" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
+              <input type="email" id="wl-email" placeholder="Email address" autocomplete="email" inputmode="email" enterkeyhint="done" required>
+            </div>
+
+            <div class="role-row" aria-label="Choose your role">
+              <button class="role-btn" type="button" onclick="selectRole(this,'Casual hiker')" aria-pressed="false">Casual hiker</button>
+              <button class="role-btn" type="button" onclick="selectRole(this,'Mountaineer')" aria-pressed="false">Mountaineer</button>
+              <button class="role-btn" type="button" onclick="selectRole(this,'Tour guide')" aria-pressed="false">Tour guide</button>
+              <button class="role-btn" type="button" onclick="selectRole(this,'Just curious')" aria-pressed="false">Just curious</button>
+            </div>
+
+            <button class="submit-btn" type="submit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Reserve my early access
+            </button>
+
+            <p class="form-note">No spam. No app store fees. Just early access plus a say in the roadmap.</p>
+          </form>
+
+          <div class="success-msg" id="wl-success" aria-live="polite">
+            Salamat! You're on the list. We'll reach out before launch with early access.
+          </div>
+
+          <div class="signup-meta">
+            <div class="meta-chip">7,641+ named peaks</div>
+            <div class="meta-chip">Always-free starting tier</div>
+          </div>
         </div>
-        <div class="survey-q">
-          <label>5. How much would you pay monthly for a Pro version? (₱<span id="price-val">200</span>)</label>
-          <input type="range" id="sq5" min="0" max="500" step="50" value="200"
-            oninput="document.getElementById('price-val').textContent=this.value; updateRangeFill(this);">
-          <div class="range-labels"><span>Free only</span><span>₱500/mo</span></div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">7,641+</div>
+          <div class="stat-label">Named peaks in the Philippines</div>
         </div>
-        <div class="survey-q">
-          <label>6. What's the one thing you wish a hiking app in the Philippines would do?</label>
-          <textarea id="sq6" placeholder="Tell us anything — no wrong answers..."></textarea>
+        <div class="stat">
+          <div class="stat-num">PHP 0</div>
+          <div class="stat-label">To get started on day one</div>
         </div>
-        <button class="survey-submit" onclick="submitSurvey()">Submit my answers</button>
-        <div class="survey-success" id="survey-success">Salamat! Your answers have been recorded. This genuinely helps us build the right app.</div>
+        <div class="stat">
+          <div class="stat-num">3-in-1</div>
+          <div class="stat-label">Hikers, guides, and community</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta-section">
-  <div class="section-inner">
-    <h2>Ready to log your first<br>summit on Akyatify?</h2>
-    <p>Join the waitlist and be first in line when we launch in the Philippines.</p>
-    <a href="#waitlist" class="cta-btn">Get early access →</a>
-  </div>
-</section>
+  <section class="why-section">
+    <div class="section-inner">
+      <div class="section-tag">The Problem</div>
+      <h2>Filipino hikers deserve better tools.</h2>
+      <p class="section-sub">Right now, the community runs on Facebook groups, chat threads, and word of mouth. That is not good enough when you are planning climbs, tracking progress, and staying safe on the trail.</p>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e8a830" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 11l9-9 9 9"></path>
+              <path d="M9 21V12h6v9"></path>
+              <circle cx="12" cy="7" r="1.5" fill="#e8a830" stroke="none"></circle>
+            </svg>
+          </div>
+          <h3>No local trail maps</h3>
+          <p>Generic apps do not know Apo, Pulag, or Batulao. We are building maps for Philippine peaks with elevation, difficulty, and offline access.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e8a830" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 20 8 8 13 14 16 10 22 20"></polyline>
+              <polyline points="16 10 18 7 20 10"></polyline>
+            </svg>
+          </div>
+          <h3>No summit tracking</h3>
+          <p>There is nowhere to log your conquered peaks, build a climbing record, or show your community what you have achieved.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e8a830" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="9" cy="7" r="3"></circle>
+              <circle cx="17" cy="9" r="2.5"></circle>
+              <path d="M2 21c0-4 3-6 7-6s7 2 7 6"></path>
+              <path d="M17 14c2.5 0 5 1.2 5 4"></path>
+            </svg>
+          </div>
+          <h3>Guides have no platform</h3>
+          <p>Local guides run their business through scattered posts and messages. They deserve a professional booking system that builds credibility.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e8a830" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2L4 6v6c0 5 3.5 9.7 8 11 4.5-1.3 8-6 8-11V6z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+          </div>
+          <h3>Safety is an afterthought</h3>
+          <p>Most apps do not offer live GPS sharing or SOS features. On remote mountains, that should never be optional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-inner">
+      <div class="section-tag">What We're Building</div>
+      <h2>Built around how Filipinos actually hike.</h2>
+      <p class="section-sub">Not a generic trail app with Philippine peaks added later. A platform designed from the ground up for this community.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-pill pill-free">Free</span>
+          <h3>Trail Map and Navigation</h3>
+          <p>Philippine-specific trail maps with elevation profiles, difficulty ratings, and crowd-sourced trail conditions. Basic Google Maps integration from day one.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-pill pill-free">Free</span>
+          <h3>Community Feed</h3>
+          <p>Share trip photos, post trail condition updates, and plan group hikes. A social layer built for hikers, not a generic network.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-pill pill-summit">Peak Log</span>
+          <h3>Mountain Conquest Log</h3>
+          <p>Track every peak you have summited. Build your climbing history with photos, dates, and elevation stats, then share your summit card.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-pill pill-pro">Pro</span>
+          <h3>Offline Maps and Live GPS</h3>
+          <p>Download trail maps before you hike, share your live location with trusted contacts, and use one-tap SOS with emergency alerts.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-pill pill-free">Free</span>
+          <h3>Guide Marketplace</h3>
+          <p>Browse verified local tour guides by trail, price, and reviews. Guides get a professional profile, booking calendar, and GCash payout flow.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-pill pill-pro">Pro</span>
+          <h3>Smart Recommendations</h3>
+          <p>Trail suggestions based on your skill level, conquered peaks, and season so you always know what mountain to climb next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-section">
+    <div class="section-inner">
+      <div class="section-tag">Who It's For</div>
+      <h2>Made for everyone on the trail.</h2>
+      <p class="section-sub">Whether you are tagging your first summit or guiding your hundredth expedition.</p>
+
+      <div class="who-grid">
+        <div class="who-card hiker">
+          <div class="who-num">01</div>
+          <h3>Casual Hikers</h3>
+          <p>Discover trails near you, find beginner-friendly routes, log your first peaks, and connect with a community that shares your love for the outdoors.</p>
+        </div>
+        <div class="who-card mountaineer">
+          <div class="who-num">02</div>
+          <h3>Mountaineers</h3>
+          <p>Get advanced topo maps, technical route grading, Garmin sync, offline GPS, and a peak leaderboard that reflects your track record.</p>
+        </div>
+        <div class="who-card guide">
+          <div class="who-num">03</div>
+          <h3>Tour Guides</h3>
+          <p>Use a professional home base with a verified profile, booking calendar, GCash payouts, group tracking on trail, and discovery by new hikers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="survey-section" id="survey">
+    <div class="section-inner survey-layout">
+      <div class="survey-intro">
+        <div class="section-tag">Shape The App</div>
+        <h2>Help us build the right thing.</h2>
+        <p class="section-sub">This takes about two minutes. The answers directly influence what we prioritize in the first version.</p>
+
+        <div class="survey-points">
+          <div class="survey-point">
+            <strong>Tell us how you hike.</strong>
+            <span>We want to understand who needs this first.</span>
+          </div>
+          <div class="survey-point">
+            <strong>Vote on the must-have features.</strong>
+            <span>Maps, safety, community, guides, or peak logging.</span>
+          </div>
+          <div class="survey-point">
+            <strong>Set the pricing bar early.</strong>
+            <span>Your answers help shape the free and Pro tiers.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="survey-box">
+        <h3>Quick hiker survey</h3>
+        <p>Tell us what matters most to you on the trail.</p>
+
+        <form id="survey-form" onsubmit="submitSurvey(event)">
+          <div class="survey-q">
+            <label for="sq1">1. How often do you go hiking?</label>
+            <select id="sq1">
+              <option value="">Select one...</option>
+              <option>Multiple times a week</option>
+              <option>Once a week</option>
+              <option>2-3 times a month</option>
+              <option>Once a month</option>
+              <option>A few times a year</option>
+              <option>I'm just starting out</option>
+            </select>
+          </div>
+
+          <div class="survey-q">
+            <label for="sq2">2. What region do you hike in most?</label>
+            <select id="sq2">
+              <option value="">Select one...</option>
+              <option>Metro Manila / Rizal (Batulao, Pico de Loro)</option>
+              <option>Luzon (Pulag, Apo Sandawa, Ugo)</option>
+              <option>Visayas (Canlaon, Tres Reyes)</option>
+              <option>Mindanao (Apo, Kitanglad, Dulang-Dulang)</option>
+              <option>Everywhere - I travel for peaks</option>
+            </select>
+          </div>
+
+          <div class="survey-q">
+            <label>3. Which features matter most to you? (Select all that apply)</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" value="Trail maps"> Trail maps with elevation</label>
+              <label class="checkbox-item"><input type="checkbox" value="Peak log"> Peak conquest log / summit tracker</label>
+              <label class="checkbox-item"><input type="checkbox" value="Community"> Community feed and trip sharing</label>
+              <label class="checkbox-item"><input type="checkbox" value="Guide"> Finding and booking a tour guide</label>
+              <label class="checkbox-item"><input type="checkbox" value="Safety"> Live GPS sharing and SOS</label>
+              <label class="checkbox-item"><input type="checkbox" value="Offline"> Offline maps for no-signal areas</label>
+              <label class="checkbox-item"><input type="checkbox" value="Weather"> Hyperlocal weather and summit conditions</label>
+            </div>
+          </div>
+
+          <div class="survey-q">
+            <label for="sq4">4. Have you ever hired a local tour guide for a hike?</label>
+            <select id="sq4">
+              <option value="">Select one...</option>
+              <option>Yes - regularly</option>
+              <option>Yes - once or twice</option>
+              <option>No, but I'd consider it</option>
+              <option>No, I prefer solo / with friends</option>
+            </select>
+          </div>
+
+          <div class="survey-q">
+            <label for="sq5">5. How much would you pay monthly for a Pro version? (PHP <span id="price-val">200</span>)</label>
+            <input type="range" id="sq5" min="0" max="500" step="50" value="200" oninput="document.getElementById('price-val').textContent=this.value; updateRangeFill(this);">
+            <div class="range-labels"><span>Free only</span><span>PHP 500/mo</span></div>
+          </div>
+
+          <div class="survey-q">
+            <label for="sq6">6. What's the one thing you wish a hiking app in the Philippines would do?</label>
+            <textarea id="sq6" placeholder="Tell us anything - no wrong answers..."></textarea>
+          </div>
+
+          <button class="survey-submit" type="submit">Submit my answers</button>
+          <div class="survey-success" id="survey-success" aria-live="polite">Salamat! Your answers have been recorded. This genuinely helps us build the right app.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="section-inner">
+      <div class="cta-shell">
+        <div>
+          <div class="section-tag cta-tag">Launch List</div>
+          <h2>Ready to log your first summit on Akyatify?</h2>
+          <p>Join the waitlist and be first in line when we launch in the Philippines.</p>
+        </div>
+        <a href="#waitlist" class="cta-btn">Get early access</a>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
-  <p><img src="logo.png" alt="Akyatify" style="height:28px;width:auto;vertical-align:middle;margin-bottom:4px;opacity:0.7;"></p>
-  <p style="margin-top:0.5rem">Built for the Philippine hiking community.</p>
-  <p style="margin-top:0.4rem">© 2026 Akyatify. All rights reserved. &nbsp;·&nbsp; Privacy Policy &nbsp;·&nbsp; Terms of Service</p>
+  <p><img src="logo.png" alt="Akyatify" class="footer-logo"></p>
+  <p>Built for the Philippine hiking community.</p>
+  <p>&copy; 2026 Akyatify. All rights reserved. Privacy Policy. Terms of Service.</p>
 </footer>
 
 <script src="main.js"></script>
