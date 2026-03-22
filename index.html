@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akyatify — The Filipino Hiker's App</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --green: #1a6b3a;
+            --green-mid: #2d9a57;
+            --green-light: #e8f5ee;
+            --earth: #8b5e3c;
+            --earth-light: #f5ede6;
+            --gold: #e8a830;
+            --dark: #111a14;
+            --mid: #3d4f42;
+            --muted: #7a8c7e;
+            --white: #fafdf9;
+            --border: rgba(26, 107, 58, 0.15);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 2.5rem;
+            background: rgba(250, 253, 249, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            color: var(--mid);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-cta {
+            background: var(--green);
+            color: white !important;
+            padding: 0.55rem 1.3rem;
+            border-radius: 100px;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.15s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--green-mid) !important;
+            transform: translateY(-1px);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 8rem 2.5rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 80% 40%, rgba(45, 154, 87, 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(139, 94, 60, 0.06) 0%, transparent 60%);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: linear-gradient(var(--green) 1px, transparent 1px),
+                linear-gradient(90deg, var(--green) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 2rem;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green-mid);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.4)
+            }
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            color: var(--dark);
+            margin-bottom: 2.5rem;
+            animation: fadeUp 0.6s 0.1s ease both;
+        }
+
+        h1 em {
+            font-style: normal;
+            color: var(--green);
+            position: relative;
+        }
+
+        h1 em::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--mid);
+            line-height: 1.7;
+            max-width: 540px;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            animation: fadeUp 0.6s 0.2s ease both;
+        }
+
+        .hero-sub strong {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        /* FORM */
+        .waitlist-form {
+            animation: fadeUp 0.6s 0.3s ease both;
+            width: 100%;
+            max-width: 560px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+
+        .form-row input[type="text"],
+        .form-row input[type="email"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.85rem 1.2rem;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            background: white;
+            color: var(--dark);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-row input:focus {
+            border-color: var(--green-mid);
+        }
+
+        .form-row input::placeholder {
+            color: var(--muted);
+        }
+
+        .role-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+            justify-content: center;
+        }
+
+        .role-btn {
+            padding: 0.6rem 1.2rem;
+            border: 1.5px solid var(--border);
+            border-radius: 100px;
+            background: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--mid);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .role-btn:hover {
+            border-color: var(--green-mid);
+            color: var(--green);
+        }
+
+        .role-btn.active {
+            background: var(--green);
+            border-color: var(--green);
+            color: white;
+        }
+
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--green);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            max-width: 340px;
+            justify-content: center;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .submit-btn:hover {
+            background: var(--green-mid);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .form-note {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .success-msg {
+            display: none;
+            background: var(--green-light);
+            border: 1px solid rgba(26, 107, 58, 0.2);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 3rem;
+            animation: fadeUp 0.6s 0.4s ease both;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--green);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-top: 0.25rem;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 5rem 2.5rem;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 0.75rem;
+        }
+
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-sub {
+            font-size: 1.05rem;
+            color: var(--mid);
+            line-height: 1.7;
+            max-width: 560px;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        /* WHY SECTION */
+        .why-section {
+            background: var(--dark);
+        }
+
+        .why-section h2,
+        .why-section .section-tag {
+            color: var(--gold);
+        }
+
+        .why-section .section-sub {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .why-card {
+            background: var(--dark);
+            padding: 2rem;
+            transition: background 0.2s;
+        }
+
+        .why-card:hover {
+            background: #1a2a1e;
+        }
+
+        .why-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(232, 168, 48, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .why-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+        }
+
+        /* FEATURES */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--green-mid);
+            transform: translateY(-4px);
+        }
+
+        .feature-pill {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .pill-free {
+            background: var(--green-light);
+            color: var(--green);
+        }
+
+        .pill-pro {
+            background: rgba(232, 168, 48, 0.12);
+            color: #a0700f;
+        }
+
+        .pill-summit {
+            background: rgba(139, 94, 60, 0.1);
+            color: var(--earth);
+        }
+
+        .feature-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* FOR WHO */
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .who-card {
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .who-card.hiker {
+            background: var(--green-light);
+        }
+
+        .who-card.mountaineer {
+            background: var(--dark);
+        }
+
+        .who-card.guide {
+            background: var(--earth-light);
+        }
+
+        .who-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .who-card.hiker h3 {
+            color: var(--green);
+        }
+
+        .who-card.mountaineer h3 {
+            color: white;
+        }
+
+        .who-card.guide h3 {
+            color: var(--earth);
+        }
+
+        .who-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .who-card.hiker p {
+            color: var(--mid);
+        }
+
+        .who-card.mountaineer p {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .who-card.guide p {
+            color: var(--mid);
+        }
+
+        .who-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            opacity: 0.06;
+            position: absolute;
+            right: 1rem;
+            bottom: -1rem;
+            line-height: 1;
+        }
+
+        .who-card.hiker .who-num {
+            color: var(--green);
+        }
+
+        .who-card.mountaineer .who-num {
+            color: white;
+        }
+
+        .who-card.guide .who-num {
+            color: var(--earth);
+        }
+
+        /* SURVEY */
+        .survey-section {
+            background: var(--green-light);
+        }
+
+        .survey-box {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 680px;
+            border: 1.5px solid var(--border);
+        }
+
+        .survey-box h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .survey-box p {
+            font-size: 0.92rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .survey-q {
+            margin-bottom: 1.5rem;
+        }
+
+        .survey-q label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .survey-q select,
+        .survey-q textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.92rem;
+            color: var(--dark);
+            background: white;
+            outline: none;
+            transition: border-color 0.2s;
+            appearance: none;
+        }
+
+        .survey-q select:focus,
+        .survey-q textarea:focus {
+            border-color: var(--green-mid);
+        }
+
+        .survey-q textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .survey-q input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #d1e8d9;
+            outline: none;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            margin: 0.5rem 0;
+        }
+
+        .survey-q input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--green);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .survey-q input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--green);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+
+        .survey-q input[type="range"]::-moz-range-track {
+            height: 6px;
+            border-radius: 3px;
+            background: #d1e8d9;
+        }
+
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--mid);
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--green);
+            cursor: pointer;
+        }
+
+        .survey-submit {
+            background: var(--green);
+            color: white;
+            padding: 0.85rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .survey-submit:hover {
+            background: var(--green-mid);
+        }
+
+        .survey-success {
+            display: none;
+            background: var(--green-light);
+            border: 1px solid rgba(26, 107, 58, 0.2);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            color: var(--green);
+            font-weight: 500;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* CTA BOTTOM */
+        .cta-section {
+            background: var(--green);
+            text-align: center;
+            padding: 5rem 2.5rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            border-radius: 14px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.92;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.4);
+            padding: 2rem 2.5rem;
+            text-align: center;
+            font-size: 0.82rem;
+            line-height: 1.8;
+        }
+
+        footer span {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 1rem 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            section {
+                padding: 4rem 1.2rem;
+            }
+
+            .hero {
+                padding: 7rem 1.2rem 3rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo"><img src="/logo.png" alt="Akyatify" style="height: 38px; width: auto; display: block;">
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#survey">Survey</a>
+            <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-inner">
+            <div class="hero-tag">Coming soon — built for Filipino hikers</div>
+            <h1>Your summit.<br><em>Your story.</em><br>Logged.</h1>
+            <p class="hero-sub">
+                Akyatify is the all-in-one trail app built for the
+                <strong>Philippine hiking community</strong> — track your peaks, find trusted guides,
+                and connect with hikers who get it.
+            </p>
+
+            <div class="waitlist-form" id="waitlist">
+                <div id="form-area">
+                    <div class="form-row">
+                        <input type="text" id="wl-name" placeholder="Your name" required>
+                        <input type="email" id="wl-email" placeholder="Email address" required>
+                    </div>
+                    <div class="role-row" id="role-select">
+                        <button class="role-btn" onclick="selectRole(this,'Casual hiker')">Casual hiker</button>
+                        <button class="role-btn" onclick="selectRole(this,'Mountaineer')">Mountaineer</button>
+                        <button class="role-btn" onclick="selectRole(this,'Tour guide')">Tour guide</button>
+                        <button class="role-btn" onclick="selectRole(this,'Just curious')">Just curious</button>
+                    </div>
+                    <button class="submit-btn" onclick="submitWaitlist()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                        Reserve my early access
+                    </button>
+                    <p class="form-note">No spam. No app store fees. Just early access + your input shapes the product.
+                    </p>
+                </div>
+                <div class="success-msg" id="wl-success">
+                    Salamat! You're on the list. We'll reach out before launch with early access. 🏔️
+                </div>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-num">7,641+</div>
+                    <div class="stat-label">Named peaks in the Philippines</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">₱0</div>
+                    <div class="stat-label">To get started — always free tier</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">3-in-1</div>
+                    <div class="stat-label">Hikers, guides, community</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY NOW -->
+    <section class="why-section">
+        <div class="section-inner">
+            <div class="section-tag">The problem</div>
+            <h2>Filipino hikers deserve<br>better tools.</h2>
+            <p class="section-sub">Right now, the community runs on Facebook groups, WhatsApp chats, and word of mouth.
+                That's not good enough.</p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">🗺️</div>
+                    <h3>No local trail maps</h3>
+                    <p>Generic apps don't know Apo, Pulag, or Batulao. We're building maps for Philippine peaks — with
+                        elevation, difficulty, and offline access.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🏔️</div>
+                    <h3>No summit tracking</h3>
+                    <p>There's nowhere to log your conquered peaks, build a climbing record, or show your community what
+                        you've achieved.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🤝</div>
+                    <h3>Guides have no platform</h3>
+                    <p>Local guides run their entire business through Facebook posts. They deserve a professional
+                        booking system that builds their credibility.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">⛑️</div>
+                    <h3>Safety is an afterthought</h3>
+                    <p>Most apps don't offer live GPS sharing or SOS features. On remote mountains, that's not
+                        acceptable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+        <div class="section-inner">
+            <div class="section-tag">What we're building</div>
+            <h2>Built around how<br>Filipinos actually hike.</h2>
+            <p class="section-sub">Not a generic trail app with Philippine peaks added. A platform designed from the
+                ground up for this community.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-pill pill-free">Free</span>
+                    <h3>Trail Map & Navigation</h3>
+                    <p>Philippine-specific trail maps with elevation profiles, difficulty ratings, and crowd-sourced
+                        trail conditions. Basic Google Maps integration from day one.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-pill pill-free">Free</span>
+                    <h3>Community Feed</h3>
+                    <p>Share trip photos, post trail condition updates, plan group hikes. A social layer built for
+                        hikers — not a generic social network.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-pill pill-summit">Peak Log</span>
+                    <h3>Mountain Conquest Log</h3>
+                    <p>Track every peak you've summited. Build your climbing history with photos, dates, and elevation
+                        stats. Share your summit card with the community.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-pill pill-pro">Pro</span>
+                    <h3>Offline Maps + Live GPS</h3>
+                    <p>Download trail maps before you hike. Share your live location with trusted contacts. One-tap SOS
+                        with emergency contact alert.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-pill pill-free">Free</span>
+                    <h3>Guide Marketplace</h3>
+                    <p>Browse verified local tour guides by trail, price, and reviews. Guides get a professional
+                        profile, booking calendar, and GCash payout — all in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-pill pill-pro">Pro</span>
+                    <h3>Smart Recommendations</h3>
+                    <p>Trail suggestions based on your skill level, conquered peaks, and the season. Never run out of
+                        new mountains to climb.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOR WHO -->
+    <section style="background: #f5f7f5;">
+        <div class="section-inner">
+            <div class="section-tag">Who it's for</div>
+            <h2>Made for everyone<br>on the trail.</h2>
+            <p class="section-sub">Whether you're tagging your first summit or guiding your hundredth expedition.</p>
+            <div class="who-grid">
+                <div class="who-card hiker">
+                    <div class="who-num">01</div>
+                    <h3>Casual Hikers</h3>
+                    <p>Discover new trails near you, find beginner-friendly routes, log your first peaks, and connect
+                        with a community that shares your love for the outdoors.</p>
+                </div>
+                <div class="who-card mountaineer">
+                    <div class="who-num">02</div>
+                    <h3>Mountaineers</h3>
+                    <p>Advanced topo maps, technical route grading, Garmin sync, offline GPS, and a peak leaderboard
+                        that shows the community your track record.</p>
+                </div>
+                <div class="who-card guide">
+                    <div class="who-num">03</div>
+                    <h3>Tour Guides</h3>
+                    <p>Your professional home base. Verified profile, booking calendar, GCash payouts, group tracking on
+                        trail, and discovery by hikers looking for your expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SURVEY -->
+    <section class="survey-section" id="survey">
+        <div class="section-inner">
+            <div class="section-tag">Shape the app</div>
+            <h2>Help us build the right thing.</h2>
+            <p class="section-sub">Takes 2 minutes. Your answers directly influence what we prioritize in the first
+                version.</p>
+            <div class="survey-box">
+                <h3>Quick hiker survey</h3>
+                <p>Tell us about yourself and what matters most to you on the trail.</p>
+
+                <div id="survey-form">
+                    <div class="survey-q">
+                        <label>1. How often do you go hiking?</label>
+                        <select id="sq1">
+                            <option value="">Select one...</option>
+                            <option>Multiple times a week</option>
+                            <option>Once a week</option>
+                            <option>2–3 times a month</option>
+                            <option>Once a month</option>
+                            <option>A few times a year</option>
+                            <option>I'm just starting out</option>
+                        </select>
+                    </div>
+
+                    <div class="survey-q">
+                        <label>2. What region do you hike in most?</label>
+                        <select id="sq2">
+                            <option value="">Select one...</option>
+                            <option>Metro Manila / Rizal (Batulao, Pico de Loro)</option>
+                            <option>Luzon (Pulag, Apo Sandawa, Ugo)</option>
+                            <option>Visayas (Canlaon, Tres Reyes)</option>
+                            <option>Mindanao (Apo, Kitanglad, Dulang-Dulang)</option>
+                            <option>Everywhere — I travel for peaks</option>
+                        </select>
+                    </div>
+
+                    <div class="survey-q">
+                        <label>3. Which features matter most to you? (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="checkbox" value="Trail maps"> Trail maps with
+                                elevation</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Peak log"> Peak conquest log /
+                                summit tracker</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Community"> Community feed and
+                                trip sharing</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Guide"> Finding and booking a
+                                tour guide</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Safety"> Live GPS sharing and
+                                SOS</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Offline"> Offline maps for
+                                no-signal areas</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Weather"> Hyperlocal weather and
+                                summit conditions</label>
+                        </div>
+                    </div>
+
+                    <div class="survey-q">
+                        <label>4. Have you ever hired a local tour guide for a hike?</label>
+                        <select id="sq4">
+                            <option value="">Select one...</option>
+                            <option>Yes — regularly</option>
+                            <option>Yes — once or twice</option>
+                            <option>No, but I'd consider it</option>
+                            <option>No, I prefer solo / with friends</option>
+                        </select>
+                    </div>
+
+                    <div class="survey-q">
+                        <label>5. How much would you pay monthly for a Pro version? (₱<span
+                                id="price-val">200</span>)</label>
+                        <input type="range" id="sq5" min="0" max="500" step="50" value="200"
+                            oninput="document.getElementById('price-val').textContent=this.value; updateRangeFill(this);">
+                        <div class="range-labels"><span>Free only</span><span>₱500/mo</span></div>
+                    </div>
+
+                    <div class="survey-q">
+                        <label>6. What's the one thing you wish a hiking app in the Philippines would do?</label>
+                        <textarea id="sq6" placeholder="Tell us anything — no wrong answers..."></textarea>
+                    </div>
+
+                    <button class="survey-submit" onclick="submitSurvey()">Submit my answers</button>
+                    <div class="survey-success" id="survey-success">
+                        Salamat! Your answers have been recorded. This genuinely helps us build the right app. 🙏
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="section-inner">
+            <h2>Ready to log your first<br>summit on Akyatify?</h2>
+            <p>Join the waitlist and be first in line when we launch in the Philippines.</p>
+            <a href="#waitlist" class="cta-btn">Get early access →</a>
+        </div>
+    </section>
+
+    <footer>
+        <p><img src="/logo.png" alt="Akyatify" style="height:28px;width:auto;vertical-align:middle;margin-bottom:4px;">
+        </p>
+        <p style="margin-top:0.5rem">Built for the Philippine hiking community.</p>
+        <p style="margin-top:0.4rem">© 2025 Akyatify. All rights reserved. &nbsp;·&nbsp; Privacy Policy &nbsp;·&nbsp;
+            Terms of Service</p>
+    </footer>
+
+    <script>
+        // ─── CONFIGURATION ───────────────────────────────────────────────────────────
+        // After deploying your Google Apps Script, paste the two Web App URLs below.
+        // See GOOGLE_APPS_SCRIPT.js included with this project for setup instructions.
+        const WAITLIST_URL = 'YOUR_WAITLIST_APPS_SCRIPT_URL_HERE';
+        const SURVEY_URL = 'YOUR_SURVEY_APPS_SCRIPT_URL_HERE';
+        // ─────────────────────────────────────────────────────────────────────────────
+
+        let selectedRole = '';
+
+        function selectRole(btn, role) {
+            document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedRole = role;
+        }
+
+        function updateRangeFill(input) {
+            const pct = ((input.value - input.min) / (input.max - input.min)) * 100;
+            input.style.background = `linear-gradient(to right, #2d9a57 ${pct}%, #d1e8d9 ${pct}%)`;
+        }
+
+        async function submitWaitlist() {
+            const name = document.getElementById('wl-name').value.trim();
+            const email = document.getElementById('wl-email').value.trim();
+            if (!name || !email) { alert('Please enter your name and email.'); return; }
+            if (!/\S+@\S+\.\S+/.test(email)) { alert('Please enter a valid email address.'); return; }
+
+            const btn = document.querySelector('.submit-btn');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            const payload = { name, email, role: selectedRole || 'Not selected', timestamp: new Date().toISOString() };
+
+            try {
+                if (WAITLIST_URL !== 'YOUR_WAITLIST_APPS_SCRIPT_URL_HERE') {
+                    await fetch(WAITLIST_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                }
+                document.getElementById('form-area').style.display = 'none';
+                document.getElementById('wl-success').style.display = 'block';
+            } catch (err) {
+                console.error('Waitlist error:', err);
+                document.getElementById('form-area').style.display = 'none';
+                document.getElementById('wl-success').style.display = 'block';
+            }
+        }
+
+        async function submitSurvey() {
+            const sq1 = document.getElementById('sq1').value;
+            const sq2 = document.getElementById('sq2').value;
+            const sq4 = document.getElementById('sq4').value;
+            const sq5 = document.getElementById('sq5').value;
+            const sq6 = document.getElementById('sq6').value;
+            const features = Array.from(document.querySelectorAll('.checkbox-group input:checked'))
+                .map(cb => cb.value).join(', ');
+
+            if (!sq1 || !sq2) { alert('Please answer at least the first two questions.'); return; }
+
+            const surveyBtn = document.querySelector('.survey-submit');
+            surveyBtn.textContent = 'Sending...';
+            surveyBtn.disabled = true;
+
+            const payload = {
+                frequency: sq1, region: sq2, features,
+                guide_experience: sq4, price_willing: '₱' + sq5 + '/mo',
+                open_feedback: sq6, timestamp: new Date().toISOString()
+            };
+
+            try {
+                if (SURVEY_URL !== 'YOUR_SURVEY_APPS_SCRIPT_URL_HERE') {
+                    await fetch(SURVEY_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                }
+                document.getElementById('survey-success').style.display = 'block';
+                surveyBtn.textContent = 'Submitted!';
+                surveyBtn.style.background = '#aaa';
+            } catch (err) {
+                console.error('Survey error:', err);
+                document.getElementById('survey-success').style.display = 'block';
+                surveyBtn.textContent = 'Submitted!';
+                surveyBtn.style.background = '#aaa';
+            }
+        }
+
+        // Init range fill on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const r = document.getElementById('sq5');
+            if (r) updateRangeFill(r);
+        });
+    </script>
+</body>
+
+</html>
