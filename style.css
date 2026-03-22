@@ -241,7 +241,7 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(3rem, 9vw, 6.3rem);
+  font-size: clamp(3rem, 8vw, 5.7rem);
   line-height: 0.95;
   letter-spacing: -0.05em;
   animation: fade-up 0.6s ease both;
@@ -356,22 +356,22 @@ h3 {
 }
 
 .hero-shell {
-  width: min(100%, 48rem);
+  width: min(100%, 50rem);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  gap: clamp(1.25rem, 3vw, 2rem);
 }
 
 .hero-copy {
   width: 100%;
-  max-width: 44rem;
+  max-width: 43rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.35rem;
   padding: 0;
   text-align: center;
 }
@@ -404,7 +404,7 @@ h3 {
 }
 
 .hero-sub {
-  max-width: 42rem;
+  max-width: 39rem;
   margin: 0;
   animation: fade-up 0.6s 0.1s ease both;
 }
@@ -461,6 +461,8 @@ h3 {
 }
 
 .hero-proof {
+  width: 100%;
+  max-width: 44rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -494,7 +496,7 @@ h3 {
 .signup-card {
   position: relative;
   overflow: hidden;
-  width: min(100%, 34rem);
+  width: min(100%, 44rem);
   margin: 0 auto;
   padding: clamp(1.15rem, 3vw, 1.6rem);
   border-radius: var(--radius-lg);
@@ -524,7 +526,7 @@ h3 {
   align-items: center;
   gap: 0.45rem;
   padding: 0.45rem 0.8rem;
-  margin-bottom: 0.9rem;
+  margin: 0 auto 0.9rem;
   border-radius: 999px;
   background: rgba(16, 54, 41, 0.08);
   color: var(--forest-700);
@@ -538,11 +540,14 @@ h3 {
   font-size: clamp(1.85rem, 4vw, 2.4rem);
   line-height: 1;
   margin-bottom: 0.7rem;
+  text-align: center;
 }
 
 .card-copy {
-  margin: 0 0 1.3rem;
+  max-width: 31rem;
+  margin: 0 auto 1.3rem;
   font-size: 0.98rem;
+  text-align: center;
 }
 
 .waitlist-fields {
@@ -659,6 +664,7 @@ h3 {
 .signup-meta {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.75rem;
   margin-top: 1rem;
 }
@@ -667,8 +673,8 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  max-width: 58rem;
-  margin: 2rem auto 0;
+  max-width: 50rem;
+  margin: 1.5rem auto 0;
   animation: fade-up 0.6s 0.35s ease both;
 }
 
@@ -1272,7 +1278,7 @@ footer {
   }
 
   .hero-shell {
-    width: min(100%, 36rem);
+    width: min(100%, 38rem);
   }
 
   h1 {
@@ -1284,11 +1290,14 @@ footer {
     height: 0.38rem;
   }
 
-  .hero-actions,
-  .hero-proof,
-  .signup-meta {
+  .hero-actions {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .hero-proof,
+  .signup-meta {
+    justify-content: center;
   }
 
   .hero-primary,
