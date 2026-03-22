@@ -1,11 +1,5 @@
-// ─── CONFIGURATION ───────────────────────────────────────────────────────────
-// Paste your Google Apps Script Web App URLs here after deploying.
-// Your Spreadsheet ID: 1U1jAa6Hc84DIRj5HR1mXcLQuNsUK7sVksw7Ygk9zKoE
-// Tab 1 (gid=0)           → Waitlist tab
-// Tab 2 (gid=1615652149)  → Survey tab
-//
-// Follow GOOGLE_APPS_SCRIPT.js instructions to get each URL, then paste below.
-const WAITLIST_URL = 'YOUR_WAITLIST_APPS_SCRIPT_URL_HERE';
+
+const WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbwL56a9f9os6f_9d0n6WwkCIDt-jTHS4lVk4mxknpQLmi-2jRyjedv5ZFwnR1M4tTx4QA/exec';
 const SURVEY_URL   = 'YOUR_SURVEY_APPS_SCRIPT_URL_HERE';
 // ─────────────────────────────────────────────────────────────────────────────
 
